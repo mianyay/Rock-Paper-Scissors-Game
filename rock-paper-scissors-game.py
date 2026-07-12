@@ -1,22 +1,6 @@
 import time
 import random
 
-player_score = 0
-computer_score = 0
-ties = 0
-
-def slow_print(text):
-    for char in text:
-        print(char, end ="", flush = True)
-        time.sleep(0.04)
-
-greeting = "Welcome to the rock, paper, scissors game! \n"
-time.sleep(1)
-slow_print(greeting)
-
-goal = int(input("Best of how much rounds? "))
-target = (goal // 2) + 1
-
 while True: # anything indented here will play while it is True
     options = """
 Please select a choice underneath by the number:
@@ -24,7 +8,7 @@ Please select a choice underneath by the number:
 2 - Paper
 3 - Scissors
 4 - Quit Game \n"""
-    slow_print(options)
+    print(options)
     try:
         choose = int(input("Enter your choice: "))
     except ValueError:
@@ -50,7 +34,7 @@ Please select a choice underneath by the number:
 
     time.sleep(1)
 
-    slow_print("Computer turn... \n")
+    print("Computer turn... \n")
     time.sleep(0.5)
     computer_roll = random.randint(1, 3)
     if computer_roll == 1:
@@ -71,27 +55,14 @@ Please select a choice underneath by the number:
     time.sleep(1)
 
     if user_choice == computer_choice:
-        slow_print('\x1b[34m' + "It's a tie! \n" + '\033[39m')
-        ties += 1
+        print('\x1b[34m' + "It's a tie! \n" + '\033[39m')
+
     elif user_choice == "Rock" and computer_choice == "Scissors" or user_choice == "Scissors" and computer_choice == "Paper" or user_choice == "Paper" and computer_choice == "Rock":
-        slow_print('\033[32m' + f"""User wins, {user_choice} beat {computer_choice}!
+        print('\033[32m' + f"""User wins, {user_choice} beat {computer_choice}!
 == User wins == \n""" + '\033[39m')
-        player_score += 1
+
     else:
-        slow_print('\033[31m' + f"""Computer wins, {computer_choice} beat {user_choice}! Haha
+        print('\033[31m' + f"""Computer wins, {computer_choice} beat {user_choice}! Haha
 == User lost == \n""" + '\033[39m')
-        computer_score += 1
-    
-    time.sleep(1)
-    slow_print('\033[1m' + f"Score: Player {player_score} | Computer {computer_score} | Ties {ties} \n" + '\033[0m')
-    time.sleep(1)
 
-    if player_score == target:
-        slow_print("User won! \n Game over")
-        break
-
-    if computer_score == target:
-        slow_print("Computer won! \n Game over")
-        break
-
-    slow_print("-" * 50)
+    print("-" * 50)
