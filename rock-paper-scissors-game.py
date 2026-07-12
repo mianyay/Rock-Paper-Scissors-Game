@@ -13,6 +13,7 @@ def slow_print(text):
 greeting = "Welcome to the rock, paper, scissors game! \n"
 time.sleep(1)
 slow_print(greeting)
+name = input("What is your name? ").capitalize()
 
 while True:
     choice_mode = input("Want to play best of game? (y/n) ").strip().lower()
@@ -49,13 +50,13 @@ Please select a choice underneath by the number:
 
     if choose == 1:
         user_choice = "Rock"
-        print(f"User choice is: {user_choice}")
+        print(f"{name} choice is: {user_choice}")
     elif choose == 2:
         user_choice = "Paper"
-        print(f"User choice is: {user_choice}")
+        print(f"{name} choice is: {user_choice}")
     elif choose == 3:
         user_choice = "Scissors"
-        print(f"User choice is: {user_choice}")
+        print(f"{name} choice is: {user_choice}")
     else:
         print("Invalid choice. Try again.")
         continue
@@ -86,21 +87,21 @@ Please select a choice underneath by the number:
         slow_print('\x1b[34m' + "It's a tie! \n" + '\033[39m')
         ties += 1
     elif user_choice == "Rock" and computer_choice == "Scissors" or user_choice == "Scissors" and computer_choice == "Paper" or user_choice == "Paper" and computer_choice == "Rock":
-        slow_print('\033[32m' + f"""User wins, {user_choice} beat {computer_choice}!
-== User wins == \n""" + '\033[39m')
+        slow_print('\033[32m' + f"""{name} wins, {user_choice} beat {computer_choice}!
+== {name} wins == \n""" + '\033[39m')
         player_score += 1
     else:
         slow_print('\033[31m' + f"""Computer wins, {computer_choice} beat {user_choice}! Haha
-== User lost == \n""" + '\033[39m')
+== {name} lost == \n""" + '\033[39m')
         computer_score += 1
     
     time.sleep(1)
-    slow_print('\033[1m' + f"Score: Player {player_score} | Computer {computer_score} | Ties {ties} \n" + '\033[0m')
+    slow_print('\033[1m' + f"Score: {name} {player_score} | Computer {computer_score} | Ties {ties} \n" + '\033[0m')
     time.sleep(1)
 
     if best_of:
         if player_score == target:
-            slow_print("User won the match! \n Game over")
+            slow_print(f"{name} won the match! \n Game over")
             break
 
         elif computer_score == target:
