@@ -14,8 +14,20 @@ greeting = "Welcome to the rock, paper, scissors game! \n"
 time.sleep(1)
 slow_print(greeting)
 
-goal = int(input("Best of how much rounds? "))
-target = (goal // 2) + 1
+while True:
+    choice_mode = input("Want to play best of game? (y/n) ").strip().lower()
+    if choice_mode == "y" or choice_mode == "yes":
+        best_of = True
+        break
+    elif choice_mode == "n" or choice_mode == "no":
+        best_of = False
+        break
+    else:
+        print("Enter y or n")
+
+if best_of == True:
+    goal = int(input("Best of how much rounds? "))
+    target = (goal // 2) + 1
 
 while True: # anything indented here will play while it is True
     options = """
@@ -86,12 +98,13 @@ Please select a choice underneath by the number:
     slow_print('\033[1m' + f"Score: Player {player_score} | Computer {computer_score} | Ties {ties} \n" + '\033[0m')
     time.sleep(1)
 
-    if player_score == target:
-        slow_print("User won! \n Game over")
-        break
+    if best_of:
+        if player_score == target:
+            slow_print("User won the match! \n Game over")
+            break
 
-    if computer_score == target:
-        slow_print("Computer won! \n Game over")
-        break
+        elif computer_score == target:
+            slow_print("Computer won the match! \n Game over")
+            break
 
     slow_print("-" * 50)
