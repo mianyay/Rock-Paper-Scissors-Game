@@ -109,3 +109,26 @@ Please select a choice underneath by the number:
             break
 
     slow_print("-" * 50)
+
+total_rounds = player_score + computer_score + ties
+
+if total_rounds > 0:
+    player_win_perc = (player_score / total_rounds) * 100
+    computer_win_perc = (computer_score / total_rounds) * 100
+    tie_perc = (ties / total_rounds ) * 100
+else:
+    player_win_perc = computer_win_perc = tie_perc = 0 
+
+if player_score > computer_score and player_score > ties:
+    common = "Player wins"
+elif computer_score > player_score and computer_score > ties:
+    common = "Computer wins"
+else:
+    common = "Ties"
+
+slow_print("\n== SUMMARY OF GAME ==\n")
+print(f"Total rounds: {total_rounds}")
+print(f"Player wins: {player_score} (%{player_win_perc:.2f})")
+print(f"Computer wins: {computer_score} (%{computer_win_perc:.2f})")
+print(f"Ties: {ties} (%{tie_perc:.2f})")
+print(f"The most common outcome: {common}")
